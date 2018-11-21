@@ -12,10 +12,11 @@ app.set('view engine', 'hbs')
 //adding partials
 hbs.registerPartials(__dirname + '/views/partials')
 //helpers 
-// hbs.registerHelper('colores',function(x){
-//     if(x>25) return '<h2 style="color:red">'+x+'</h2>'
-//     else return '<h2 style="color :green">'+x+'</h2>'
-// })
+hbs.registerHelper('colores',(x, y)=>{
+    console.log(x, y)
+    if(x>25) return new hbs.SafeString('<h2 style="color:red">'+x+'</h2>')
+    else return 'Nel tu no'
+})
 app.locals.title = 'perro'
 
 
@@ -36,7 +37,7 @@ app.get('/users',(req, res)=>{
     const users = [
         {
             name:'Oswaldinho',
-            age:22,
+            age:28,
             hobby:'Comer all day long',
             hungry:true        
         },{
